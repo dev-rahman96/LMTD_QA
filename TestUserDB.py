@@ -11,7 +11,7 @@ class TestDatabaseFunctions(unittest.TestCase):
         """Create the mock database and table"""
         self.dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
         
-        from TestUserTableDB import create_test_table
+        from TestUserTable import create_test_table
         self.table = create_test_table(self.dynamodb)
         
     def tearDown(self):
@@ -20,7 +20,9 @@ class TestDatabaseFunctions(unittest.TestCase):
         self.dynamodb=None 
         
     def testTable(self):
-        pass
+        self.assertTrue(self.table) # check if we got a result
+        self.assertIn('test_userdevbops', self.table.name) # check table name
+        pprint(self.table.name)
         
         
 
