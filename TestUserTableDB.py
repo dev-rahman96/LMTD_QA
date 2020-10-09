@@ -6,24 +6,65 @@ def create_test_table(dynamodb=None):
         dynamodb = boto3.resource('dynamodb', endpoint_url='http://localhost:8000')
 
     table = dynamodb.create_table(
-        TableName='test_userdevbops',
+        TableName='Events',
         KeySchema=[
             {
-                'AttributeName': 'ID',
-                'KeyType': 'NUMBER'
+                'AttributeName': 'Event_name',
+                'KeyType': 'STRING'
             },
             {
-                'AttributeName': 'firstname',
+                'AttributeName': 'Event_date',
+                'KeyType': 'STRING'
+            },
+            {
+                'AttributeName': 'Event_time',
+                'KeyType': 'STRING'
+            },
+            {
+                'AttributeName': 'User',
+                'KeyType': 'STRING'
+            },
+            {
+                'AttributeName': 'Event_desc',
+                'KeyType': 'STRING'
+            },
+            {
+                'AttributeName': 'Event_image',
+                'KeyType': 'STRING'
+            },
+            {
+                'AttributeName': 'Event_location',
                 'KeyType': 'STRING'
             }
         ],
         AttributeDefinitions=[
             {
-                'AttributeName': 'ID',
-                'AttributeType': 'N'
+                'AttributeName': 'Event_name',
+                'AttributeType': 'S'
             },
             {
-                'AttributeName': 'firstname',
+                'AttributeName': 'Event_date',
+                'AttributeType': 'S'
+            },
+            {
+                'AttributeName': 'Event_time',
+                'AttributeType': 'S'
+            },
+            {
+                'AttributeName': 'User',
+                'AttributeType': 'S'
+            },
+            {
+                'AttributeName': 'Event_desc',
+                'AttributeType': 'S'
+            },
+            {
+                'AttributeName': 'Event_image',
+                'AttributeType': 'S'
+            },
+            {
+              
+                'AttributeName': 'Event_location',
                 'AttributeType': 'S'
             }
         ],
@@ -34,7 +75,7 @@ def create_test_table(dynamodb=None):
     )
 
     # Wait until the table exists.
-    table.meta.client.get_waiter('table_exists').wait(TableName='test_userdevbops')
+    table.meta.client.get_waiter('table_exists').wait(TableName='Events')
     assert table.table_status == 'ACTIVE'
 
     return table
