@@ -11,8 +11,8 @@ class TestDatabaseFunctions(unittest.TestCase):
         """Create the mock database and table"""
         self.dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
         
-        from TestUserTable import create_test_table
-        self.table = create_test_table(self.dynamodb)
+        from TestUserTable import test_create_test_table
+        self.table = test_create_test_table(self.dynamodb)
         
     def tearDown(self):
         """Delete mock database and table after test is run"""
