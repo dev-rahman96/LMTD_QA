@@ -52,8 +52,8 @@ def test_createEvent():
 #             response = c.get('/event/delete')
 #             assert(response.status_code, 200)
 
-# def test_eventRSVP():
-#         with app.test_client() as c:
-#             response = c.get('/event/rsvp')
-#             assert(response.status_code, 200)
+def test_eventRSVP():
+        with app.test_client() as c:
+            response = c.get('/event/rsvp')
+            assert(response.status_code, 200)
 
