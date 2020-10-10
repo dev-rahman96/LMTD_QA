@@ -10,14 +10,14 @@ def test_create_test_table(dynamodb=None):
         TableName='test_EventsDB',
         KeySchema=[
             {
-                'AttributeName': 'event_id',
-                'KeyType': 'NUMBER'
+                'AttributeName': 'Event_name',
+                'KeyType': 'STRING'
             }
         ],
         AttributeDefinitions=[
             {
-                'AttributeName': 'event_id',
-                'AttributeType': 'N'
+                'AttributeName': 'Event_name',
+                'AttributeType': 'S'
             }
 
         ],
