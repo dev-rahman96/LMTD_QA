@@ -57,7 +57,7 @@ def update():
 @app.route("/event-view", methods= ["GET"])
 def view_event():
     res = event.view()
-    return str(res)
+    return res
 
 
 
@@ -77,31 +77,3 @@ def rsvp():
 
 if __name__ == '__main__':
     app.run(debug=True)
-
-
-
-def test_createEvent():
-        with app.test_client() as c:
-            response = c.get('/create-event')
-            #print((response.status_code))
-            assert response.status_code == 200
-
-def test_eventViewing():
-        with app.test_client() as c:
-            response = c.get('/event-view')
-            assert response.status_code == 200
-
-def test_eventUpdate():
-        with app.test_client() as c:
-            response = c.get('/event-update')
-            assert response.status_code == 200
-
-def test_eventDelete():
-        with app.test_client() as c:
-            response = c.get('/event-delete')
-            assert response.status_code == 200
-
-def test_eventRSVP():
-        with app.test_client() as c:
-            response = c.get('/event-rsvp')
-            assert response.status_code == 200
